@@ -27,22 +27,17 @@ set softtabstop=0 noexpandtab
 set shiftwidth=4
 set autoindent
 set copyindent    " copy the previous indentation on autoindenting
-set number        " always show line numbers
-set shiftwidth=4  " number of spaces to use for autoindenting
 set shiftround    " use multiple of shiftwidth when indenting with '<' and '>'
 set showmatch     " set show matching parenthesis
 set ignorecase    " ignore case when searching
 set smartcase     " ignore case if search pattern is all lowercase,
 set smarttab
-set hlsearch
-set incsearch
 
 " --- General settings ---
 set backspace=indent,eol,start
 set nowrap
 set hidden
 set ruler
-set number
 set showcmd
 set incsearch
 set hlsearch
@@ -74,6 +69,9 @@ set noswapfile
 autocmd ColorScheme * highlight ExtraWhitespace guibg=#4a4b4c guifg=green
 highlight ExtraWhitespace  guibg=#4a4b4c guifg=red
 match ExtraWhitespace /\s/
+:autocmd CursorMoved * exe exists("HlUnderCursor")?HlUnderCursor?printf('match IncSearch /\V\<%s\>/', escape(expand('<cword>'), '/\')):'match none':""
+
+let HlUnderCursor=1
 
 set background=dark
 let g:solarized_termcolors=256
@@ -106,7 +104,7 @@ let g:airline#extensions#tabline#enabled = 1
 "
 " ----- jistr/vim-nerdtree-tabs -----
 " Open/close NERDTree Tabs with \t
-nmap     <silent> <c-t> :NERDTreeTabsToggle<CR> 
+noremap  <silent> <leader>f :NERDTreeTabsToggle<CR> 
 noremap  <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
@@ -114,6 +112,8 @@ inoremap <silent> <C-S> <C-O>:update<CR>
 nmap     <silent> <F2> :bprevious<CR>
 nmap     <silent> <F3> :bnext<CR>
 nmap     <silent> <F4> :bw!<CR>
+nnoremap <silent> <F5> <C-]>    " <F5> go in tag, <Ctrl-T> go back
+nnoremap <silent> <F6> :exe "let HlUnderCursor=exists(\"HlUnderCursor\")?HlUnderCursor*-1+1:1"<CR>
 nmap     <C-S-R> :CtrlP<CR>
 
 " To have NERDTree always open on startup
@@ -125,6 +125,9 @@ autocmd VimEnter,Colorscheme * :hi IndentGuidesEven guibg=green ctermbg=4
 
 
 autocmd FileType php set omnifunc=phpcomplete#CompletePHP
+nnoremap <silent> <Leader>b :TagbarToggle<CR>
+nnoremap <leader>t :CtrlPTag<cr>
+
 
 ""ToggleWhitespace
 ""CurrentLineWhitespaceOff soft

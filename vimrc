@@ -24,6 +24,9 @@ call vundle#begin()
   Plugin 'honza/vim-snippets'
   "
 " Plugin 'ntpeters/vim-better-whitespace'
+  Plugin 'https://github.com/xolox/vim-easytags.git'
+  Plugin 'https://github.com/xolox/vim-misc.git'
+"""  Plugin 'ntpeters/vim-better-whitespace'
 call vundle#end()
 "
 let mapleader = "\<Space>"
@@ -110,6 +113,7 @@ let g:airline_detect_paste=1
 "
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
+let HlUnderCursor=0
 "
 "
 " ----- jistr/vim-nerdtree-tabs -----

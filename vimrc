@@ -15,6 +15,8 @@ call vundle#begin()
   Plugin 'scrooloose/nerdtree'
   Plugin 'jistr/vim-nerdtree-tabs'
   Plugin 'https://github.com/vim-syntastic/syntastic.git'
+  Plugin 'https://github.com/xolox/vim-easytags.git'
+  Plugin 'https://github.com/xolox/vim-misc.git'
 """  Plugin 'ntpeters/vim-better-whitespace'
 call vundle#end()
 "
@@ -100,6 +102,7 @@ let g:airline_detect_paste=1
 "
 " Show airline for tabs too
 let g:airline#extensions#tabline#enabled = 1
+let HlUnderCursor=0
 "
 "
 " ----- jistr/vim-nerdtree-tabs -----
@@ -109,8 +112,8 @@ noremap  <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
-nmap     <silent> <F2> :bprevious<CR>
-nmap     <silent> <F3> :bnext<CR>
+nmap     <silent> <C-S-n> :bprevious<CR>
+nmap     <silent> <C-n> :bnext<CR>
 nmap     <silent> <F4> :bw!<CR>
 nnoremap <silent> <F5> <C-]>    " <F5> go in tag, <Ctrl-T> go back
 nnoremap <silent> <F6> :exe "let HlUnderCursor=exists(\"HlUnderCursor\")?HlUnderCursor*-1+1:1"<CR>

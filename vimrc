@@ -2,7 +2,7 @@
 set nocompatible
 
 filetype off
-"
+
 set rtp+=~/.vim/bundle/Vundle.vim
 set rtp^=~/.vim/bundle/ctrlp.vim
 
@@ -15,7 +15,15 @@ call vundle#begin()
   Plugin 'scrooloose/nerdtree'
   Plugin 'jistr/vim-nerdtree-tabs'
   Plugin 'https://github.com/vim-syntastic/syntastic.git'
-"""  Plugin 'ntpeters/vim-better-whitespace'
+  Plugin 'MarcWeber/vim-addon-mw-utils'
+  Plugin 'tomtom/tlib_vim'
+  Plugin 'garbas/vim-snipmate'
+  Plugin 'https://github.com/majutsushi/tagbar.git'
+
+  " Optional:
+  Plugin 'honza/vim-snippets'
+  "
+" Plugin 'ntpeters/vim-better-whitespace'
 call vundle#end()
 "
 let mapleader = "\<Space>"
@@ -48,6 +56,8 @@ set list
 syntax on
 filetype plugin indent on
 autocmd filetype python set expandtab
+filetype plugin on
+set omnifunc=syntaxcomplete#Complete
 set mouse=a
 set relativenumber
 set number
@@ -109,12 +119,13 @@ noremap  <silent> <C-S> :update<CR>
 vnoremap <silent> <C-S> <C-C>:update<CR>
 inoremap <silent> <C-S> <C-O>:update<CR>
 
-nmap     <silent> <F2> :bprevious<CR>
-nmap     <silent> <F3> :bnext<CR>
+nmap     <silent> <C-S-n> :bprevious<CR>
+nmap     <silent> <C-n> :bnext<CR>
 nmap     <silent> <F4> :bw!<CR>
 nnoremap <silent> <F5> <C-]>    " <F5> go in tag, <Ctrl-T> go back
 nnoremap <silent> <F6> :exe "let HlUnderCursor=exists(\"HlUnderCursor\")?HlUnderCursor*-1+1:1"<CR>
-nmap     <C-S-R> :CtrlP<CR>
+nmap <F8> :TagbarToggle<CR>
+"#nmap     <C-S-R> :CtrlP<CR>
 
 " To have NERDTree always open on startup
 """let g:nerdtree_tabs_open_on_console_startup = 1

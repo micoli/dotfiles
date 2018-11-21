@@ -8,7 +8,6 @@ set rtp^=~/.vim/bundle/ctrlp.vim
 
 call vundle#begin()
   Plugin 'gmarik/Vundle.vim'
-  Plugin 'altercation/vim-colors-solarized'
   Plugin 'tomasr/molokai'
   Plugin 'vim-airline/vim-airline'
   Plugin 'git://github.com/nathanaelkane/vim-indent-guides.git'
@@ -87,8 +86,6 @@ match ExtraWhitespace /\s/
 let HlUnderCursor=1
 
 set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
 
 
 " Always show statusbar

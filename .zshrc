@@ -1,5 +1,5 @@
 export PATH=$HOME/bin:/usr/local/bin:$PATH
-export ZSH="/Users/${USER}/.oh-my-zsh"
+export ZSH="${HOME}/.oh-my-zsh"
 export TERM="xterm-256color"
 
 ### brew install kubectx
@@ -112,7 +112,7 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 
 autoload -U colors; colors
 
-source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
+[[ -f "/usr/local/etc/zsh-kubectl-prompt/kubectl.zsh" ]] &&  source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
 
 # The next line updates PATH for the Google Cloud SDK.
 if [ -f '/Users/micoli/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/micoli/Downloads/google-cloud-sdk/path.zsh.inc'; fi
@@ -145,7 +145,14 @@ POWERLEVEL9K_DIR_DEFAULT_BACKGROUND="blue"
 POWERLEVEL9K_DIR_DEFAULT_FOREGROUND="white"
 
 
-POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(newline context kubecontext newline dir dir_writable vcs)
+if [[ $(which kubectl) =~  "ot found" ]]
+then
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(context dir dir_writable vcs)
+else
+  POWERLEVEL9K_LEFT_PROMPT_ELEMENTS=(newline context kubecontext newline dir dir_writable vcs)
+fi
+
+
 POWERLEVEL9K_RIGHT_PROMPT_ELEMENTS=(status root_indicator background_jobs history time)
 POWERLEVEL9K_PROMPT_ON_NEWLINE=false
 POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbol%{%b%f%k%F{yellow}%} %{%f%}"

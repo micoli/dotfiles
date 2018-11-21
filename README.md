@@ -14,3 +14,10 @@ micoli dotfiles
 * brew install autojump
 * brew install zsh-kubectl-prompt
 * gcloud install;  gcloud init; gcloud components install kubectl
+
+
+
+sudo curl -fLo /usr/local/bin/yadm https://github.com/TheLocehiliosan/yadm/raw/master/yadm && sudo chmod a+x /usr/local/bin/yadm
+
+yadm clone https://github.com/micoli/dotfiles
+

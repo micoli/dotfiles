@@ -87,8 +87,8 @@ match ExtraWhitespace /\s/
 let HlUnderCursor=1
 
 set background=dark
-let g:solarized_termcolors=256
-colorscheme solarized
+#let g:solarized_termcolors=256
+#colorscheme solarized
 
 
 " Always show statusbar

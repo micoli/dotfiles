@@ -64,6 +64,7 @@ plugins=(
   brew
   dotenv
   osx
+  go
   docker
   composer
   z
@@ -71,6 +72,7 @@ plugins=(
   vagrant
   zsh-autosuggestions
   kubectl
+  kubetail
   tmux
   web-search
 )
@@ -113,12 +115,6 @@ test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell
 autoload -U colors; colors
 
 [[ -f "/usr/local/etc/zsh-kubectl-prompt/kubectl.zsh" ]] &&  source /usr/local/etc/zsh-kubectl-prompt/kubectl.zsh
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/micoli/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/micoli/Downloads/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/micoli/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/micoli/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
 
 #POWERLEVEL9K_CUSTOM_KUBECTX="custom_kubectx"
 #POWERLEVEL9K_CUSTOM_KUBECTX_BACKGROUND="yellow"
@@ -167,3 +163,14 @@ POWERLEVEL9K_MULTILINE_LAST_PROMPT_PREFIX="%{%B%F{black}%K{yellow}%} $user_symbo
 # Change the git status to red when something isn't committed and pushed
 POWERLEVEL9K_VCS_MODIFIED_BACKGROUND='yellow'
 
+export GOPATH=$HOME
+export PATH=$PATH:$GOROOT/bin:$GOPATH/bin
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/micoli/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/micoli/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/micoli/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/micoli/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
+export PATH="$HOME/.jenv/bin:$PATH"
+eval "$(jenv init -)"
+eval $(dinghy env)   
